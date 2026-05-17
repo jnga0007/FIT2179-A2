@@ -1,0 +1,169 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Domestic Visitors by Year and Quarter",
+    "subtitle": "Total visitors (millions) stacked by quarter — 2021-2025",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+
+  "width": "container",
+  "height": 300,
+
+  "data": {
+    "url": "chart7/domestic_quarterly.csv",
+
+    "format": {
+      "type": "csv",
+
+      "parse": {
+        "visitors_millions": "number"
+      }
+    }
+  },
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 3,
+        "cornerRadiusTopRight": 3
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year",
+
+          "axis": {
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "visitors_millions",
+          "type": "quantitative",
+          "title": "Visitors (millions)",
+          "stack": "zero",
+
+          "axis": {
+            "grid": true,
+            "gridDash": [3, 3]
+          }
+        },
+
+        "color": {
+          "field": "quarter",
+          "type": "nominal",
+          "title": "Quarter",
+
+          "scale": {
+            "domain": ["Q1", "Q2", "Q3", "Q4"],
+            "range": [
+              "#e15759",
+              "#f28e2b",
+              "#59a14f",
+              "#4e79a7"
+            ]
+          },
+
+          "legend": {
+            "orient": "right",
+            "title": "Quarter"
+          } 
+        },
+
+        "order": {
+          "field": "quarter",
+          "type": "ordinal",
+          "sort": "ascending"
+        },
+
+        "tooltip": [
+
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+
+          {
+            "field": "quarter",
+            "type": "nominal",
+            "title": "Quarter"
+          },
+
+          {
+            "field": "visitors_millions",
+            "type": "quantitative",
+            "title": "Visitors (M)",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": "2025",
+            "visitors_millions": 240,
+            "label": "Q4 data not recorded"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "color": "#555",
+        "align": "left",
+        "dx": -40,
+        "dy": -10
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "visitors_millions",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+
+  ],
+
+  "config": {
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "labelFont": "sans-serif",
+      "titleFont": "sans-serif"
+    },
+
+    "title": {
+      "font": "sans-serif"
+    }
+  }
+}

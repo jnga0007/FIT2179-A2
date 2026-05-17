@@ -1,0 +1,358 @@
+/* ═══════════════════════════════════════════════
+   TOKENS — Data Visualization Principles
+   High data-ink ratio · Clean sight lines · Proper typeface
+═══════════════════════════════════════════════ */
+:root {
+  --bg:          #FFFFFF;
+  --bg-alt:      #FFFFFF;
+  --text:        #1A1A1A;
+  --text-muted:  #6B6B6B;
+  --text-light:  #999;
+  --accent:      #E8593C;
+  --accent-dark: #C03E24;
+  --rule:        #E0E0E0;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', 'Source Sans 3', system-ui, -apple-system, sans-serif;
+
+  --max-width:    1120px;
+  --section-pad:  56px 40px;
+  --col-gap:      40px;
+  --card-radius:  4px;
+  --card-border:  1px solid #E8E8E8;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════
+   PAGE HEADER (replaces hero)
+═══════════════════════════════════════════════ */
+.page-header {
+  padding: 48px 48px 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-header-inner {
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 24px;
+  margin-bottom: 0;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.page-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.page-subtitle {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-size: 11px;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION SHELL
+═══════════════════════════════════════════════ */
+.section {
+  padding: var(--section-pad);
+  background: var(--bg);
+  position: relative;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+/* Section number — subtle, top-aligned */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT HELPERS
+═══════════════════════════════════════════════ */
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.layout-text-left  { flex-direction: row; }
+.layout-text-right { flex-direction: row-reverse; }
+
+.layout-centered {
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.layout-column {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.layout-column .text-col {
+  flex: 1 1 100%;
+}
+
+/* Text column — no sticky, clean reading */
+.text-col {
+  flex: 0 0 240px;
+}
+
+.text-col-center {
+  text-align: center;
+}
+
+/* Charts column */
+.charts-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.charts-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.charts-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHY — Data viz principles
+   Sans-serif body for readability, serif for titles
+═══════════════════════════════════════════════ */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* Clean accent line under heading */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  margin-top: 10px;
+}
+
+.text-col-center .section-heading::after {
+  margin: 10px auto 0;
+}
+
+.prose {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.prose p {
+  margin-bottom: 8px;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose-center {
+  text-align: center;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.prose-columns {
+  column-count: 2;
+  column-gap: 32px;
+  widows: 2;
+  orphans: 2;
+}
+
+/* ═══════════════════════════════════════════════
+   CHART CARDS — minimal chrome, high data-ink ratio
+═══════════════════════════════════════════════ */
+.chart-card {
+  background: #FFF;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.chart-card-wide {
+  width: 100%;
+  max-width: 780px;
+}
+
+.chart-card-half {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+/* Make Vega SVGs responsive & properly contained */
+.chart-card .vega-embed {
+  width: 100%;
+}
+
+.chart-card .vega-embed details {
+  display: none;
+}
+
+.chart-card svg,
+.chart-card canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDERS — light, horizontal rule
+═══════════════════════════════════════════════ */
+.section + .section::before {
+  content: '';
+  display: block;
+  width: 100%;
+  max-width: var(--max-width);
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER — compact
+═══════════════════════════════════════════════ */
+.site-footer {
+  background: var(--text);
+  color: #888;
+  padding: 40px 48px;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #FAFAFA;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.footer-credits,
+.footer-author,
+.footer-ai {
+  font-size: 12px;
+  line-height: 1.65;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+.footer-ai {
+  margin-top: 12px;
+  font-style: italic;
+  color: #555;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  :root {
+    --section-pad: 40px 24px;
+    --col-gap: 28px;
+  }
+
+  .page-header { padding: 36px 24px 0; }
+
+  .page-title { font-size: 28px; }
+
+  .section-inner {
+    flex-direction: column !important;
+  }
+
+  .text-col {
+    flex: none;
+    width: 100%;
+  }
+
+  .charts-row {
+    flex-direction: column;
+  }
+
+  .section-label { font-size: 10px; }
+
+  .site-footer { padding: 32px 24px; }
+}
+
+@media (max-width: 600px) {
+  .page-title { font-size: 24px; }
+  :root { --section-pad: 32px 16px; }
+  .page-header { padding: 24px 16px 0; }
+}

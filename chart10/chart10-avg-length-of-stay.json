@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Length of Stay for Domestic Tourism",
+    "subtitle": "Domestic tourists stayed an average of 2.5 nights per trip in 2024 — Source: DTS 2024",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 300,
+  "data": { "url": "chart10/average_length_of_stay.csv" },
+  "layer": [
+    {
+      "mark": { "type": "rule", "strokeWidth": 2, "color": "#E8593C" },
+      "encoding": {
+        "x": {
+          "field": "year", "type": "ordinal",
+          "title": "Year",
+          "axis": { "labelAngle": 0, "labelFontSize": 11 }
+        },
+        "y": {
+          "field": "avg_nights", "type": "quantitative",
+          "title": "Average Nights per Trip",
+          "scale": { "domain": [1.5, 3] },
+          "axis": { "grid": true, "gridDash": [3, 3], "labelFontSize": 11 }
+        },
+        "y2": { "datum": 1.5 }
+      }
+    },
+    {
+      "mark": { "type": "circle", "size": 120, "color": "#E8593C", "filled": true },
+      "encoding": {
+        "x": { "field": "year", "type": "ordinal" },
+        "y": {
+          "field": "avg_nights", "type": "quantitative",
+          "scale": { "domain": [1.5, 3] }
+        },
+        "tooltip": [
+          { "field": "year",       "type": "ordinal",      "title": "Year" },
+          { "field": "avg_nights", "type": "quantitative", "title": "Avg Nights", "format": ".2f" }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "sans-serif", "titleFont": "sans-serif" },
+    "title": { "font": "sans-serif" }
+  }
+}

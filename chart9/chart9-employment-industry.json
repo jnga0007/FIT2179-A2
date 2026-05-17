@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Employment in Tourism Industries",
+    "subtitle": "Number of persons employed (thousands) — Source: Tourism Satellite Account 2024",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "chart9/tourism_employment_by_industry.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "employment_thousands": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "joinaggregate": [{ "op": "sum", "field": "employment_thousands", "as": "total_employment" }],
+      "groupby": ["industry"]
+    },
+    {
+      "window": [{ "op": "dense_rank", "as": "industry_rank" }],
+      "sort": [{ "field": "total_employment", "order": "descending" }]
+    }
+  ],
+  "mark": { "type": "area", "opacity": 0.85 },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": { "labelAngle": 0 }
+    },
+    "y": {
+      "field": "employment_thousands",
+      "type": "quantitative",
+      "title": "Thousand Persons",
+      "stack": "zero",
+      "axis": { "grid": true, "gridDash": [3, 3] }
+    },
+    "color": {
+      "field": "industry",
+      "type": "nominal",
+      "sort": { "field": "total_employment", "op": "sum", "order": "descending" },
+      "scale": { "scheme": "tableau10" },
+      "legend": {
+        "title": "Industry",
+        "orient": "bottom",
+        "columns": 2,
+        "labelFontSize": 11
+      }
+    },
+    "order": { "field": "industry_rank", "type": "quantitative" },
+    "tooltip": [
+      { "field": "industry",             "type": "nominal",      "title": "Industry" },
+      { "field": "employment_thousands", "type": "quantitative", "title": "Employed (thousands)", "format": ",.1f" },
+      { "field": "year",                 "type": "ordinal",      "title": "Year" }
+    ]
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "sans-serif", "titleFont": "sans-serif" },
+    "title": { "font": "sans-serif", "anchor": "start" }
+  }
+}

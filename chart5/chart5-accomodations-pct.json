@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Accommodation Type Distribution Over Time",
+    "subtitle": "Percentage share (%) of domestic tourists by accommodation type — 2015 to 2024 | Click legend to filter",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 260,
+  "data": {
+    "url": "chart5/accommodation.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "share_pct": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "accomSelect",
+      "select": {
+        "type": "point",
+        "fields": ["accommodation"]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": { "type": "point", "filled": true, "size": 120 },
+  "encoding": {
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": { "labelAngle": 0, "labelFontSize": 12 }
+    },
+    "x": {
+      "field": "share_pct",
+      "type": "quantitative",
+      "title": "Share (%)",
+      "axis": { "grid": true, "gridDash": [3, 3] }
+    },
+    "color": {
+      "field": "accommodation",
+      "type": "nominal",
+      "title": "Accommodation Type",
+      "scale": { "scheme": "tableau10" },
+      "legend": { "orient": "right", "title": "Accommodation Type", "labelFontSize": 11 }
+    },
+    "opacity": {
+      "condition": { "param": "accomSelect", "value": 1 },
+      "value": 0.1
+    },
+    "size": {
+      "condition": { "param": "accomSelect", "value": 150 },
+      "value": 60
+    },
+    "tooltip": [
+      { "field": "year",          "type": "ordinal",      "title": "Year" },
+      { "field": "accommodation", "type": "nominal",      "title": "Type" },
+      { "field": "share_pct",     "type": "quantitative", "title": "Share (%)", "format": ".1f" }
+    ]
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "sans-serif", "titleFont": "sans-serif" },
+    "title": { "font": "sans-serif" }
+  }
+}

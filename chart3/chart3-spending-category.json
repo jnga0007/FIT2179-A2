@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Malaysia Tourism Spending by Category",
+    "subtitle": "Total tourism consumption (RM Million) — Source: Tourism Satellite Account 2024",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 300,
+  "params": [
+    {
+      "name": "yearSelect",
+      "value": 2024,
+      "bind": {
+        "input": "select",
+        "options": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "chart3/tourism_spending_by_category.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "value_rm_million": "number"
+      }
+    }
+  },
+  "transform": [
+    { "filter": "datum.year === yearSelect" }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 4,
+    "cornerRadiusTopRight": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "value_rm_million",
+      "type": "quantitative",
+      "title": "RM Million",
+      "axis": { "grid": true, "gridDash": [3, 3] }
+    },
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": { "labelFontSize": 12 }
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "legend": null,
+      "scale": { "scheme": "tableau10" }
+    },
+    "tooltip": [
+      { "field": "category",         "type": "nominal",       "title": "Category" },
+      { "field": "value_rm_million", "type": "quantitative", "title": "RM Million", "format": ",.1f" },
+      { "field": "year",             "type": "ordinal",       "title": "Year" }
+    ]
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "sans-serif", "titleFont": "sans-serif" },
+    "title": { "font": "sans-serif", "anchor": "start" }
+  }
+}

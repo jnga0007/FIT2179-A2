@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malaysia Tourism — A Data Story</title>
+
+  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Vega stack -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE HEADER (merged hero + section title)
+  ═══════════════════════════════════════════════ -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">Malaysia <em>on the Map</em></h1>
+      <p class="page-subtitle">From global rankings to rural roads, tourism tells the story of who we are.</p>
+      <div class="page-meta">
+        <span>Data: DTS 2024 · TSA 2024 · World Tourism Organisation</span>
+        <span>Visualisation: Joel Nga Jay El, 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 1 — GLOBAL POSITION
+  ═══════════════════════════════════════════════ -->
+  <section class="section" id="s1">
+    <div class="section-label">01 — Global Position</div>
+    <div class="section-inner layout-column">
+
+      <div class="text-col">
+        <h2 class="section-heading">Malaysia's<br>Global Stage</h2>
+        <div class="prose prose-columns">
+          <p>Malaysia stands among Southeast Asia's top tourism destinations.</p>
+          <p>Pre-COVID, we welcomed 35 million international visitors annually.
+            Thailand dominates with 40 million; Singapore matches our numbers.</p>
+          <p>Tourism generated RM84 billion in revenue before 2019.</p>
+          <p>Then COVID crashed the industry — borders closed globally.</p>
+          <p>By 2021, arrivals dropped to just 400,000 visitors.</p>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card chart-card-half">
+          <div id="chart1"></div>
+        </div>
+        <div class="chart-card chart-card-half">
+          <div id="chart2"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 2 — DOMESTIC REALITY
+  ═══════════════════════════════════════════════ -->
+  <section class="section" id="s2">
+    <div class="section-label">02 — Domestic Reality</div>
+    <div class="section-inner layout-text-right">
+
+      <div class="charts-col charts-stack">
+        <div class="chart-card">
+          <div id="chart6"></div>
+        </div>
+        <div class="chart-card">
+          <div id="chart7"></div>
+        </div>
+      </div>
+
+      <div class="text-col">
+        <h2 class="section-heading">The Domestic<br>Giant</h2>
+        <div class="prose">
+          <p>While international borders closed, Malaysians traveled locally.
+            Domestic tourism is Malaysia's hidden economic giant.</p>
+          <p>260 million domestic trips in 2024 alone — nearly 7 times larger
+            than international arrivals.</p>
+          <p>Quarterly numbers show steady post-COVID recovery.
+            Q4 consistently peaks due to year-end holidays.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 3 — GEOGRAPHIC DISTRIBUTION
+  ═══════════════════════════════════════════════ -->
+  <section class="section" id="s3">
+    <div class="section-label">03 — Geographic Distribution</div>
+    <div class="section-inner layout-centered">
+
+      <div class="text-col text-col-center">
+        <h2 class="section-heading">Where Do<br>Tourists Go?</h2>
+        <div class="prose prose-center">
+          <p>Tourism benefits are unequally distributed across Malaysia.
+            Kuala Lumpur and Selangor dominate visitor numbers.</p>
+          <p>East Malaysia attracts adventurous travelers seeking nature.
+            Rural states struggle to capture tourism dollars.</p>
+        </div>
+      </div>
+
+      <div class="chart-card chart-card-wide">
+        <div id="chart8"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 4 — FOLLOWING THE MONEY
+  ═══════════════════════════════════════════════ -->
+  <section class="section" id="s4">
+    <div class="section-label">04 — Following the Money</div>
+    <div class="section-inner layout-column">
+
+      <div class="text-col">
+        <h2 class="section-heading">Following<br>the Money</h2>
+        <div class="prose prose-columns">
+          <p>Where does tourism money actually flow? Food and beverage services</p>
+          <p>lead all categories. Accommodation and transport follow closely.</p>
+          <p>Spending crashed 45% during COVID's peak year.</p>
+          <p>Recovery exploded in 2022 with 88% growth. By 2024, </p>
+          <p>expenditure stabilised at healthy rates.</p>
+          <p>Hotels remain the dominant accommodation choice consistently.</p>
+        </div>
+      </div>
+
+      <div class="charts-col charts-stack">
+        <div class="chart-card">
+          <div id="chart3"></div>
+        </div>
+        <div class="charts-row">
+          <div class="chart-card chart-card-half">
+            <div id="chart5"></div>
+          </div>
+          <div class="chart-card chart-card-half">
+            <div id="chart4"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 5 — ECONOMIC IMPACT
+  ═══════════════════════════════════════════════ -->
+  <section class="section" id="s5">
+    <div class="section-label">05 — Economic Impact</div>
+    <div class="section-inner layout-text-right">
+
+      <div class="charts-col charts-stack">
+        <div class="chart-card">
+          <div id="chart9"></div>
+        </div>
+        <div class="chart-card">
+          <div id="chart10"></div>
+        </div>
+      </div>
+
+      <div class="text-col">
+        <h2 class="section-heading">Jobs and<br>Recovery</h2>
+        <div class="prose">
+          <p>Tourism employs hundreds of thousands across industries.
+            Food services and retail lead job creation.</p>
+          <p>Employment recovered quickly after COVID restrictions lifted.</p>
+          <p>Trip duration reveals tourism quality and value.
+            Tourists stayed 2.5 nights average in 2024.</p>
+          <p>Length of stay has now returned to pre-pandemic levels.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-title">Malaysia on the Map</p>
+      <p class="footer-credits">
+        Data sources: 
+        <a href="https://www.kaggle.com/datasets/bushraqurban/tourism-and-economic-impact" target="_blank">Kaggle — Tourism and Economic Impact (bushraqurban)</a> · 
+        <a href="https://www.dosm.gov.my/portal-main/release-content/tourism-satellite-account-2024" target="_blank">DOSM — Tourism Satellite Account 2024</a> · 
+        <a href="https://www.dosm.gov.my/portal-main/release-content/domestic-tourism-survey-2024" target="_blank">DOSM — Domestic Tourism Survey 2024</a> · 
+        <a href="https://www.dosm.gov.my/portal-main/release-content/domestic-tourism-survey-states-2024" target="_blank">DOSM — Domestic Tourism Survey States 2024</a> · 
+        <a href="https://www.dosm.gov.my/portal-main/release-content/malaysias-domestic-tourism-survey-q42025" target="_blank">DOSM — Domestic Tourism Survey Q4 2025</a>
+      </p>
+      <p class="footer-author">Visualisation by Joel Nga Jay El · 36062790 · FIT2179 · Monash University Malaysia · 2026</p>
+      <p class="footer-ai">AI tools (Claude by Anthropic) were used to assist in chart creation and code generation.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       VEGA EMBED
+  ═══════════════════════════════════════════════ -->
+  <script>
+    const OPT = { renderer: "svg", actions: false };
+
+    vegaEmbed("#chart1",  "chart1/chart1-asean-comparison.json",     OPT);
+    vegaEmbed("#chart2",  "chart2/chart2-tourism-receipts.json",     OPT);
+    vegaEmbed("#chart3",  "chart3/chart3-spending-category.json",    OPT);
+    vegaEmbed("#chart4",  "chart4/chart4-yoy-diverging.json",        OPT);
+    vegaEmbed("#chart5",  "chart5/chart5-accomodations-pct.json",    OPT);
+    vegaEmbed("#chart6",  "chart6/chart6-domestic-vs-international.json", OPT);
+    vegaEmbed("#chart7",  "chart7/chart7-quaterly-visitors.json",    OPT);
+    vegaEmbed("#chart8",  "chart8/chart8-domestic-visitors.json",    OPT);
+    vegaEmbed("#chart9",  "chart9/chart9-employment-industry.json",  OPT);
+    vegaEmbed("#chart10", "chart10/chart10-avg-length-of-stay.json", OPT);
+  </script>
+
+</body>
+</html>

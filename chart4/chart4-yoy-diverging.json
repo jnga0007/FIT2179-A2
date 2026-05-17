@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Year-over-Year Growth: Total Expenditure",
+    "subtitle": "Domestic tourism expenditure YoY % change — 2013 to 2024",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 260,
+  "data": {
+    "url": "chart4/expenditure_yoy.csv",
+    "format": {
+      "type": "csv",
+      "parse": { "yoy_pct": "number" }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "cornerRadius": 3 },
+      "encoding": {
+        "y": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "sort": null,
+          "axis": { "labelFontSize": 12 }
+        },
+        "x": {
+          "field": "yoy_pct",
+          "type": "quantitative",
+          "title": "YoY Change (%)",
+          "axis": { "grid": true, "gridDash": [3, 3] }
+        },
+        "color": {
+          "condition": { "test": "datum.yoy_pct >= 0", "value": "#2196a6" },
+          "value": "#e05b4b"
+        },
+        "tooltip": [
+          { "field": "year",    "type": "ordinal",      "title": "Year" },
+          { "field": "yoy_pct","type": "quantitative",  "title": "YoY Change (%)", "format": ".1f" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "rule", "color": "#333", "strokeWidth": 1 },
+      "encoding": { "x": { "datum": 0 } }
+    },
+  {
+    "mark": {
+      "type": "text",
+      "fontSize": 10,
+      "fontWeight": "bold",
+
+      "align": {
+        "expr": "datum.yoy_pct >= 0 ? 'left' : 'right'"
+      },
+
+      "dx": {
+        "expr": "datum.yoy_pct >= 0 ? 4 : -4"
+      }
+    },
+
+    "encoding": {
+
+      "y": {
+        "field": "year",
+        "type": "ordinal",
+        "sort": null
+      },
+
+      "x": {
+        "field": "yoy_pct",
+        "type": "quantitative"
+      },
+
+      "text": {
+        "field": "yoy_pct",
+        "type": "quantitative",
+        "format": ".1f"
+      },
+
+      "color": {
+        "value": "#333333"
+      }
+    }
+  }
+  ],
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "sans-serif", "titleFont": "sans-serif" },
+    "title": { "font": "sans-serif" }
+  }
+}

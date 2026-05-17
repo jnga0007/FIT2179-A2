@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Domestic Visitors by State",
+    "subtitle": "Number of domestic visitors ('000) — Source: DTS 2024",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 380,
+  "params": [
+    {
+      "name": "yearSelect",
+      "value": 2024,
+      "bind": {
+        "input": "range",
+        "min": 2017,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [109, 4],
+    "scale": 1800
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "chart8/malaysia_state.json",
+        "format": { "type": "topojson", "feature": "malaysia_state" }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke": "white",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "chart8/malaysia_state.json",
+        "format": { "type": "topojson", "feature": "malaysia_state" }
+      },
+      "transform": [
+        { "calculate": "trim(datum.properties.name)", "as": "state_name" },
+        { "calculate": "datum.state_name + '|' + yearSelect", "as": "state_year_key" },
+        {
+          "lookup": "state_year_key",
+          "from": {
+            "data": {
+              "url": "chart8/domestic_visitors_by_state.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "year": "number",
+                  "visitors_thousands": "number"
+                }
+              }
+            },
+            "key": "state_year",
+            "fields": ["visitors_thousands", "year", "state"]
+          }
+        }
+      ],
+      "mark": { "type": "geoshape", "stroke": "white", "strokeWidth": 1 },
+      "encoding": {
+        "color": {
+          "field": "visitors_thousands",
+          "type": "quantitative",
+          "scale": { "scheme": "orangered", "domain": [0, 35000] },
+          "legend": { "title": "Visitors ('000)", "orient": "bottom-right" }
+        },
+        "tooltip": [
+          { "field": "state",               "type": "nominal",      "title": "State" },
+          { "field": "year",                "type": "quantitative", "title": "Year" },
+          { "field": "visitors_thousands",  "type": "quantitative", "title": "Visitors ('000)", "format": ",.1f" }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": { "stroke": null },
+    "title": { "font": "sans-serif", "anchor": "start" }
+  }
+}
