@@ -4,14 +4,14 @@
   "title": {
     "text": "Domestic Visitors by Year and Quarter",
     "subtitle": "Total visitors (millions) stacked by quarter — 2021-2025",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "fontSize": 20,
+    "subtitleFontSize": 14,
     "subtitleColor": "#666",
     "anchor": "start"
   },
 
   "width": "container",
-  "height": 300,
+  "height": 460,
 
   "data": {
     "url": "chart7/domestic_quarterly.csv",
@@ -42,7 +42,9 @@
           "title": "Year",
 
           "axis": {
-            "labelAngle": 0
+            "labelAngle": 0,
+            "labelFontSize": 13,
+            "titleFontSize": 14
           }
         },
 
@@ -54,7 +56,9 @@
 
           "axis": {
             "grid": true,
-            "gridDash": [3, 3]
+            "gridDash": [3, 3],
+            "labelFontSize": 13,
+            "titleFontSize": 14
           }
         },
 
@@ -75,7 +79,9 @@
 
           "legend": {
             "orient": "right",
-            "title": "Quarter"
+            "title": "Quarter",
+            "labelFontSize": 12,
+            "titleFontSize": 13
           } 
         },
 
@@ -112,7 +118,7 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 8,
+        "fontSize": 10,
         "fontWeight": "bold",
         "color": "#222",
         "align": "center",

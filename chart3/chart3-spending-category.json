@@ -53,10 +53,7 @@
       "axis": { "labelFontSize": 12 }
     },
     "color": {
-      "field": "category",
-      "type": "nominal",
-      "legend": null,
-      "scale": { "scheme": "tableau10" }
+      "value": "#C76E00"
     },
     "tooltip": [
       { "field": "category",         "type": "nominal",       "title": "Category" },

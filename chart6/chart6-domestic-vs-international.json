@@ -9,7 +9,8 @@
     "anchor": "start"
   },
   "width": "container",
-  "height": 375,
+  "height": 380,
+  "autosize": { "type": "fit", "contains": "padding" },
   "params": [
     {
       "name": "yearSelect",
@@ -18,7 +19,7 @@
     },
     {
       "name": "zoom_level",
-      "value": 153,
+      "value": 135,
       "bind": { "input": "range", "min": 80, "max": 600, "step": 10, "name": "Zoom: " }
     },
     {
@@ -76,12 +77,12 @@
         "latitude2":  { "field": "dest_lat" },
         "strokeWidth": {
           "field": "arrivals", "type": "quantitative",
-          "scale": { "range": [2, 18] },
+          "scale": { "range": [3, 18] },
           "legend": { "title": "Arrivals", "orient": "bottom-left" }
         },
         "color": {
           "field": "arrivals", "type": "quantitative",
-          "scale": { "scheme": "orangered" }, "legend": null
+          "scale": { "scheme": "reds" }, "legend": null
         },
         "tooltip": [
           { "field": "country",  "type": "nominal",      "title": "Country" },
@@ -146,7 +147,7 @@
         { "filter": "datum.year == yearSelect" },
         { "calculate": "'+ ' + format(datum.other, ',.0f') + ' arrivals from other countries (not shown)'", "as": "note" }
       ],
-      "mark": { "type": "text", "align": "left", "fontSize": 10, "fontStyle": "italic", "color": "#555", "x": 10, "y": 390 },
+      "mark": { "type": "text", "align": "left", "fontSize": 10, "fontStyle": "italic", "color": "#555", "x": 10, "y": 360 },
       "encoding": { "text": { "field": "note", "type": "nominal" } }
     }
   ],

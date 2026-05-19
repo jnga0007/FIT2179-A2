@@ -48,7 +48,7 @@
       "field": "accommodation",
       "type": "nominal",
       "title": "Accommodation Type",
-      "scale": { "scheme": "tableau10" },
+      "scale": { "scheme": "greens" },
       "legend": { "orient": "right", "title": "Accommodation Type", "labelFontSize": 11 }
     },
     "opacity": {

@@ -339,6 +339,47 @@ body {
 .chart-card canvas,
 .chart-card svg   { max-width: 100%; display: block; }
 
+/* ── SECTION 2 LAYOUT ── */
+.s2-body {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.s2-chart { min-height: 560px; }
+.s2-chart #chart7 { height: 520px; }
+.s2-chart #chart7 > * { height: 100%; }
+
+.s2-prose {
+  position: sticky;
+  top: 6rem;
+}
+
+.s2-prose .prose-lead {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--forest);
+  margin-bottom: 1.25rem;
+}
+
+.s2-prose p {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  margin-bottom: 0.9rem;
+  line-height: 1.75;
+}
+
+.s2-prose strong { color: var(--forest); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .s2-body { grid-template-columns: 1fr; }
+  .s2-prose { position: static; }
+}
+
 /* ── SECTION 4 LAYOUT ── */
 .s4-header {
   display: grid;
@@ -367,6 +408,7 @@ body {
   color: var(--ink-mid);
   margin-bottom: 0.9rem;
   line-height: 1.75;
+  max-width: 60ch;
 }
 
 .s4-header-right strong {

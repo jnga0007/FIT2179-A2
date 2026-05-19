@@ -65,15 +65,27 @@
             "key": "state_year",
             "fields": ["visitors_thousands", "year", "state"]
           }
+        },
+        {
+          "calculate": "datum.visitors_thousands <= 3000 ? '0–3,000' : datum.visitors_thousands <= 8000 ? '3,000–8,000' : datum.visitors_thousands <= 15000 ? '8,000–15,000' : datum.visitors_thousands <= 25000 ? '15,000–25,000' : '> 25,000'",
+          "as": "visitor_bin"
         }
       ],
       "mark": { "type": "geoshape", "stroke": "white", "strokeWidth": 1 },
       "encoding": {
         "color": {
-          "field": "visitors_thousands",
-          "type": "quantitative",
-          "scale": { "scheme": "orangered", "domain": [0, 35000] },
-          "legend": { "title": "Visitors ('000)", "orient": "bottom-right" }
+          "field": "visitor_bin",
+          "type": "nominal",
+          "title": "Visitors ('000)",
+          "scale": {
+            "domain": ["0–3,000", "3,000–8,000", "8,000–15,000", "15,000–25,000", "> 25,000"],
+            "range": ["#feedde", "#fdbe85", "#e6550d", "#a63603", "#8B0000"]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
         },
         "tooltip": [
           { "field": "state",               "type": "nominal",      "title": "State" },

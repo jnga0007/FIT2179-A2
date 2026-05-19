@@ -3,12 +3,12 @@
   "title": {
     "text": "Malaysia's Tourism Revenue (1999-2023)",
     "subtitle": "Tourism generated RM84 billion in 2019 before COVID crashed the industry",
-    "fontSize": 16,
-    "subtitleFontSize": 13,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
     "subtitleColor": "#666"
   },
   "width": "container",
-  "height": 300,
+  "height": 320,
   "data": {
     "url": "chart2/world_tourism_economy_data.csv"
   },
@@ -50,14 +50,14 @@
       "mark": {
         "type": "area",
         "line": {
-          "color": "#2E86AB",
+          "color": "#c0392b",
           "strokeWidth": 2.5
         },
         "color": {
           "gradient": "linear",
           "stops": [
-            {"offset": 0, "color": "#2E86AB"},
-            {"offset": 1, "color": "#D0E8F2"}
+            {"offset": 0, "color": "#c0392b"},
+            {"offset": 1, "color": "#e1ccc7"}
           ]
         }
       },
@@ -66,12 +66,12 @@
           "field": "year",
           "type": "quantitative",
           "title": "Year",
-          "scale": {"zero": false},
+          "scale": {"zero": false, "domain": [1999, 2023]},
           "axis": {
             "format": "d",
-            "labelFontSize": 11,
-            "titleFontSize": 12,
-            "tickCount": 10
+            "values": [1999, 2003, 2007, 2011, 2015, 2019, 2023],
+            "labelFontSize": 13,
+            "titleFontSize": 14
           }
         },
         "y": {
@@ -82,8 +82,8 @@
           "axis": {
             "format": "~s",
             "labelExpr": "datum.value / 1000000000 + 'B'",
-            "labelFontSize": 11,
-            "titleFontSize": 12
+            "labelFontSize": 13,
+            "titleFontSize": 14
           }
         },
         "tooltip": [

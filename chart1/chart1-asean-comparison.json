@@ -3,12 +3,12 @@
   "title": {
     "text": "International Tourist Arrivals: Malaysia vs ASEAN Neighbors",
     "subtitle": "Malaysia competes closely with Singapore, but Thailand dominates the region",
-    "fontSize": 16,
-    "subtitleFontSize": 13,
+    "fontSize": 18,
+    "subtitleFontSize": 14,
     "subtitleColor": "#666"
   },
   "width": "container",
-  "height": 300,
+  "height": 320,
   "data": {
     "url": "chart1/world_tourism_economy_data.csv"
   },
@@ -64,8 +64,9 @@
           "title": "Year",
           "axis": {
             "labelAngle": 0,
-            "labelFontSize": 11,
-            "titleFontSize": 12
+            "labelFontSize": 13,
+            "titleFontSize": 14,
+            "tickCount": 6
           }
         },
         "y": {
@@ -74,9 +75,10 @@
           "title": "Tourist Arrivals (millions)",
           "scale": {"zero": false},
           "axis": {
-            "format": ".1s",
-            "labelFontSize": 11,
-            "titleFontSize": 12
+            "labelExpr": "datum.value / 1000000 + 'M'",
+            "labelFontSize": 13,
+            "titleFontSize": 14,
+            "tickCount": 6
           }
         },
         "color": {
