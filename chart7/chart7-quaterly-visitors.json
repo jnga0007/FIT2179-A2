@@ -110,6 +110,49 @@
     },
 
     {
+      "mark": {
+        "type": "text",
+        "fontSize": 8,
+        "fontWeight": "bold",
+        "color": "#222",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -2,
+        "opacity": 0.95
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "visitors_millions",
+          "type": "quantitative",
+          "stack": "zero"
+        },
+
+        "text": {
+          "field": "visitors_millions",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+
+        "order": {
+          "field": "quarter",
+          "type": "ordinal",
+          "sort": "ascending"
+        },
+
+        "detail": {
+          "field": "quarter",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
       "data": {
         "values": [
           {
